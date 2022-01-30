@@ -1,0 +1,26 @@
+const favoriteDate = [
+  {
+    id: 1,
+    title: "Golf d'intérieur",
+    location: "Ajaccio",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+    image: require("../images/indoor_golf.png"),
+    price: 50,
+    rating: 4.5,
+    start_time: "14:00",
+    end_time: "22:00",
+    updated_at: new Date(2022, 1, 26, 16, 0, 0),
+  },
+  {
+    id: 2,
+    title: "Kayak",
+    location: "Aleria",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+    image: require("../images/kayak.jpg"),
+    price: 20,
+    rating: 3,
+    start_time: "8:30",
+    end_time: "17:00",
+    updated_at: new Date(2022, 1, 14, 10, 0, 0),
+  },
+];

@@ -1,13 +1,13 @@
 import React from "react";
 import { Text } from "react-native";
-import { TextCenter } from "../Components/TextCenter";
+import { Center } from "../../Components/Center";
 
 interface ProfileScreenProps {}
 
 export const ProfileScreen: React.FC<ProfileScreenProps> = (props) => {
   return (
-    <TextCenter>
+    <Center>
       <Text>Profile screen</Text>
-    </TextCenter>
+    </Center>
   );
 };

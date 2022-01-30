@@ -1,14 +1,17 @@
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import React from "react";
-import { HomeScreen } from "./Screens/HomeScreen";
-import { Feather } from "@expo/vector-icons";
-import { ProfileScreen } from "./Screens/ProfileScreen";
+import { AntDesign } from "@expo/vector-icons";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+
+import { HomeStack } from "./HomeStack";
+import { ProfileScreen } from "./Screens/AppTabsScreens/ProfileScreen";
+import { SettingScreen } from "./Screens/AppTabsScreens/SettingScreen";
 
 interface AppTabsProps {}
 
 export type AppTabsParamList = {
-  Home: undefined;
   Profile: undefined;
+  HomeStack: undefined;
+  Setting: undefined;
 };
 
 const Tabs = createBottomTabNavigator<AppTabsParamList>();
@@ -16,24 +19,34 @@ const Tabs = createBottomTabNavigator<AppTabsParamList>();
 export const AppTabs: React.FC<AppTabsProps> = (props) => {
   return (
     <Tabs.Navigator
-      initialRouteName="Home"
+      initialRouteName="HomeStack"
       screenOptions={({ route }) => ({
+        tabBarHideOnKeyboard: true,
+        tabBarStyle: {
+          height: 60,
+          justifyContent: "center",
+          paddingBottom: 5,
+        },
+        header: () => null,
         tabBarIcon: ({ color, size }) => {
           switch (route.name) {
-            case "Home":
-              return <Feather name={"home"} size={size} color={color} />;
             case "Profile":
-              return <Feather name={"user"} size={size} color={color} />;
+              return <AntDesign name={"user"} size={size} color={color} />;
+            case "HomeStack":
+              return <AntDesign name={"home"} size={size} color={color} />;
+            case "Setting":
+              return <AntDesign name={"setting"} size={size} color={color} />;
             default:
-              return <Feather name={"info"} size={size} color={color} />;
+              return;
           }
         },
         tabBarActiveTintColor: "#e91e63",
         tabBarInactiveTintColor: "#000",
       })}
     >
-      <Tabs.Screen name="Home" component={HomeScreen} />
-      <Tabs.Screen name="Profile" component={ProfileScreen} />
+      <Tabs.Screen name="Profile" component={ProfileScreen} options={{ tabBarLabel: "Mon compte" }} />
+      <Tabs.Screen name="HomeStack" component={HomeStack} options={{ tabBarLabel: "Accueil" }} />
+      <Tabs.Screen name="Setting" component={SettingScreen} options={{ tabBarLabel: "Paramètres" }} />
     </Tabs.Navigator>
   );
 };
