@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack/lib/typescript/src/types";
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { HomeStackParamList } from "../../HomeStack";
 import { TextInput } from "react-native-gesture-handler";
 import { AntDesign, MaterialCommunityIcons } from "@expo/vector-icons";
 
 import colors from "../../assets/colors";
+import favoriteData from "../../assets/data/FavoriteData"
+import {ActivityItem} from "../../Components/ActivityItem"
+import {dataInterface} from "../../assets/interfaces/interfaces"
 
 interface HomeScreenProps {}
 
@@ -16,6 +19,8 @@ export type HomeNavigationProps<T extends keyof HomeStackParamList> = {
 
 export const HomeScreen = ({ navigation }: HomeNavigationProps<"Home">) => {
   const [searchInputText, onSearchInputTextChange] = useState("");
+  const FavoriteDATA: dataInterface[] = favoriteData;
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.brandWrapper}>
@@ -38,12 +43,15 @@ export const HomeScreen = ({ navigation }: HomeNavigationProps<"Home">) => {
       <ScrollView style={styles.contentWrapper}>
         <View style={styles.favoriteWrapper}>
           <Text style={styles.favoriteTitle}>Favoris</Text>
-          <ScrollView style={styles.favoriteItemsWrapper}>
-            <Text>adazd</Text>
-            <Text>adazdghy</Text>
-            <Text>adazdza</Text>
-            <Text>adazd&zad</Text>
-          </ScrollView>
+          <FlatList
+            style={styles.favoriteItemsWrapper}
+            data={FavoriteDATA}
+            renderItem={({item, index}) => (
+              <ActivityItem key={item.id} id={item.id} title={item.title} location={item.location} image={item.image} numOfItems={FavoriteDATA.length} />
+            )}
+            horizontal={true}
+            showsHorizontalScrollIndicator={false}
+          />
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -53,11 +61,13 @@ export const HomeScreen = ({ navigation }: HomeNavigationProps<"Home">) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: colors.white
   },
   brandWrapper: {
-    backgroundColor: "#ccc",
     paddingHorizontal: 25,
-    paddingBottom: 20,
+    paddingVertical: 10,
+    borderBottomWidth: 1,
+    borderColor: '#8884',
   },
   brandTitle: {
     fontSize: 18,
@@ -97,13 +107,22 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 5,
     borderRadius: 8,
+    alignItems: "center",
+    justifyContent: "center",
   },
 
   contentWrapper: {
-    backgroundColor: colors.grey,
     paddingHorizontal: 25,
   },
-  favoriteWrapper: {},
-  favoriteTitle: {},
-  favoriteItemsWrapper: {},
+  favoriteWrapper: {
+
+  },
+  favoriteTitle: {
+    color: colors.black,
+    marginVertical: 15,
+    fontSize: 22,
+    fontWeight: "700"
+  },
+  favoriteItemsWrapper: {
+  },
 });

@@ -1,4 +1,6 @@
-const favoriteDate = [
+import {dataInterface} from "../interfaces/interfaces"
+
+const favoriteData: dataInterface[] = [
   {
     id: 1,
     title: "Golf d'intérieur",
@@ -23,4 +25,54 @@ const favoriteDate = [
     end_time: "17:00",
     updated_at: new Date(2022, 1, 14, 10, 0, 0),
   },
+  {
+    id: 3,
+    title: "Golf d'intérieur",
+    location: "Ajaccio",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+    image: require("../images/indoor_golf.png"),
+    price: 50,
+    rating: 4.5,
+    start_time: "14:00",
+    end_time: "22:00",
+    updated_at: new Date(2022, 1, 26, 16, 0, 0),
+  },
+  {
+    id: 4,
+    title: "Kayak",
+    location: "Aleria",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+    image: require("../images/kayak.jpg"),
+    price: 20,
+    rating: 3,
+    start_time: "8:30",
+    end_time: "17:00",
+    updated_at: new Date(2022, 1, 14, 10, 0, 0),
+  },
+  {
+    id: 5,
+    title: "Golf d'intérieur",
+    location: "Ajaccio",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+    image: require("../images/indoor_golf.png"),
+    price: 50,
+    rating: 4.5,
+    start_time: "14:00",
+    end_time: "22:00",
+    updated_at: new Date(2022, 1, 26, 16, 0, 0),
+  },
+  {
+    id: 6,
+    title: "Kayak",
+    location: "Aleria",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+    image: require("../images/kayak.jpg"),
+    price: 20,
+    rating: 3,
+    start_time: "8:30",
+    end_time: "17:00",
+    updated_at: new Date(2022, 1, 14, 10, 0, 0),
+  },
 ];
+
+export default favoriteData;
